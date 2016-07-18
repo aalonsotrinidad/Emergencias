@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+	    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+	    <!-- <property name="hibernate.connection.url">postgres://ndixrpvtdjlqlj:dlX8sZiIa2mS5-GrmbLJYI91le@ec2-54-247-121-238.eu-west-1.compute.amazonaws.com:5432/d5vtef6a7ddeuf</property>-->
+	    <property name="hibernate.connection.url">jdbc:Postgresql://ec2-23-21-102-155.compute-1.amazonaws.com:5432/d5418fkq019rpl</property>
+	    <property name="hibernate.connection.username">dhtsyocojobsrd</property>
+	    <property name="hibernate.connection.password">cjB0mRnKEn8XeK2RBwkjAipxoJ</property>
+	    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+	    <property name="show_sql">true</property>
+	    <property name="hibernate.current_session_context_class">thread</property>
+	    <property name="hibernate.connection.requireSSL">true</property>
+	    
+	    <mapping class="com.pruebas.modelo.dto.UserDTO"/>
+	</session-factory>
+</hibernate-configuration>
