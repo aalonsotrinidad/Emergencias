@@ -34,9 +34,12 @@
 	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> -->
 		  <!--  <property name="driverClassName" value="org.postgresql.Driver" /> -->
 		  <property name="driverClassName" value="org.postgresql.Driver" />
-		  <property name="url" value="jdbc:postgresql://ec2-23-21-102-155.compute-1.amazonaws.com:5432/d5418fkq019rpl" />
+		  <!-- <property name="url" value="jdbc:postgresql://ec2-23-21-102-155.compute-1.amazonaws.com:5432/d5418fkq019rpl" />
 		  <property name="username" value="dhtsyocojobsrd" />
-		  <property name="password" value="cjB0mRnKEn8XeK2RBwkjAipxoJ" />
+		  <property name="password" value="cjB0mRnKEn8XeK2RBwkjAipxoJ" />-->
+		  <property name="url" value="jdbc:postgresql://localhost:5432/postgres-Enel" />
+		  <property name="username" value="postgres" />
+		  <property name="password" value="deloitte12" />
 	 </bean>
 
 	 <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -64,17 +67,18 @@
 
 	<bean id="userServiceImpl" class="com.pruebas.service.impl.UserServiceImpl" />
 	<bean id="casoServiceImpl" class="com.pruebas.service.impl.CasoServiceImpl" />
+	<bean id="pickListServiceImpl" class="com.pruebas.service.impl.PickListServiceImpl" />
 	
 	
 	
-	<fss:oauth>
+	<!-- <fss:oauth>
         <fss:oauthInfo endpoint="https://test.salesforce.com/"
                        oauth-key="#{systemEnvironment['OAUTH_CLIENT_KEY']}"
                        oauth-secret="#{systemEnvironment['OAUTH_CLIENT_SECRET']}"/>
     </fss:oauth>
     <security:http use-expressions="true">
         <security:intercept-url pattern="/homeCasos" access="isAuthenticated()" />
-    </security:http>
+    </security:http> -->
 	<!-- <security:http auto-config="true">
         <security:intercept-url pattern="/**" access="ROLE_USER"/>
     </security:http> -->

@@ -1,9 +1,9 @@
 package com.pruebas.modelo.dto;
 
+import java.util.Map;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -28,6 +28,17 @@ public class CasoDTO {
 	@Column(name = "Description")
 	private String descripcion;
 	
+	@Column(name = "Origin")
+	private String origen;
+	
+	@Column(name = "Numero_de_Inservice__c")
+	private String numeroInservice;
+	
+	@Column(name = "Motivo_Empresa__C")
+	private String subMotivo;
+	
+	@Column(name = "Sub_Estado__c")
+	private String subEstado;
 	
 	public Integer getId() {
 		return id;
@@ -68,10 +79,36 @@ public class CasoDTO {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
-	
-	
-	
-	
-	
+
+	public String getOrigen() {
+		return origen;
+	}
+
+	public void setOrigen(String origen) {
+		this.origen = origen;
+	}
+
+	public String getNumeroInservice() {
+		return numeroInservice;
+	}
+
+	public void setNumeroInservice(String numeroInservice) {
+		this.numeroInservice = numeroInservice;
+	}
+
+	public String getSubMotivo() {
+		return subMotivo;
+	}
+
+	public void setSubMotivo(String subMotivo) {
+		this.subMotivo = subMotivo;
+	}
+
+	public String getSubEstado() {
+		return subEstado;
+	}
+
+	public void setSubEstado(String subEstado) {
+		this.subEstado = subEstado;
+	}
 }

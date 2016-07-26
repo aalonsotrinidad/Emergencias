@@ -1,7 +1,6 @@
 package com.pruebas.service.impl;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -27,10 +26,5 @@ public class CasoServiceImpl implements CasoService{
 	@Override
 	public void actualizarCaso(CasoDTO caso){
 		casoDao.actualizarCaso(caso);
-	}
-	
-	@Override
-	public Map<String, Map<String, String>> getStatusPicklist(){
-		return casoDao.recuperarPickList();
 	}
 }

@@ -11,7 +11,6 @@
  *
  * Date: 2016-04-05T19:16Z
  */
-
 (function( global, factory ) {
 
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
@@ -35,7 +34,8 @@
 	}
 
 // Pass this if window is not defined yet
-}(typeof window !== "undefined" ? window : this, function( window, noGlobal ) {
+}
+(typeof window !== "undefined" ? window : this, function( window, noGlobal ) {
 
 // Support: Firefox 18+
 // Can't be in strict mode, several libs including ASP.NET trace
@@ -43,73 +43,54 @@
 // you try to trace through "use strict" call chains. (#13335)
 //"use strict";
 var deletedIds = [];
-
 var document = window.document;
-
 var slice = deletedIds.slice;
-
 var concat = deletedIds.concat;
-
 var push = deletedIds.push;
-
 var indexOf = deletedIds.indexOf;
-
 var class2type = {};
-
 var toString = class2type.toString;
-
 var hasOwn = class2type.hasOwnProperty;
-
 var support = {};
+var version = "1.12.3",
 
+// Define a local copy of jQuery
+jQuery = function( selector, context ) {
 
+	// The jQuery object is actually just the init constructor 'enhanced'
+	// Need init if jQuery is called (just allow error to be thrown if not included)
+	return new jQuery.fn.init( selector, context );
+},
 
-var
-	version = "1.12.3",
+// Support: Android<4.1, IE<9
+// Make sure we trim BOM and NBSP
+rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
 
-	// Define a local copy of jQuery
-	jQuery = function( selector, context ) {
+// Matches dashed string for camelizing
+rmsPrefix = /^-ms-/,
+rdashAlpha = /-([\da-z])/gi,
 
-		// The jQuery object is actually just the init constructor 'enhanced'
-		// Need init if jQuery is called (just allow error to be thrown if not included)
-		return new jQuery.fn.init( selector, context );
-	},
-
-	// Support: Android<4.1, IE<9
-	// Make sure we trim BOM and NBSP
-	rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
-
-	// Matches dashed string for camelizing
-	rmsPrefix = /^-ms-/,
-	rdashAlpha = /-([\da-z])/gi,
-
-	// Used by jQuery.camelCase as callback to replace()
-	fcamelCase = function( all, letter ) {
-		return letter.toUpperCase();
-	};
+// Used by jQuery.camelCase as callback to replace()
+fcamelCase = function( all, letter ) {
+	return letter.toUpperCase();
+};
 
 jQuery.fn = jQuery.prototype = {
 
 	// The current version of jQuery being used
 	jquery: version,
-
 	constructor: jQuery,
-
 	// Start with an empty selector
 	selector: "",
-
 	// The default length of a jQuery object is 0
 	length: 0,
-
 	toArray: function() {
 		return slice.call( this );
 	},
-
 	// Get the Nth element in the matched element set OR
 	// Get the whole matched element set as a clean array
 	get: function( num ) {
 		return num != null ?
-
 			// Return just the one element from the set
 			( num < 0 ? this[ num + this.length ] : this[ num ] ) :
 

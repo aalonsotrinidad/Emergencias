@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pruebas.modelo.dto.CasoDTO;
 import com.pruebas.service.CasoService;
+import com.pruebas.service.PickListService;
 
 @Controller
 public class HomeCasosController {
@@ -17,16 +18,20 @@ public class HomeCasosController {
 	@Autowired
 	private CasoService casoService;
 	
+	@Autowired
+	private PickListService pickListService;
+	
 	@RequestMapping(value = "/homeCasos", method = RequestMethod.GET)
 	public ModelAndView listadoCasos() {
 		System.out.println("Ejecutar consulta");
 		ModelAndView model = new ModelAndView();
 		model.addObject("casos", casoService.listaCasosHome());
 		System.out.println("Intentamos recuperar los picklist");
-		Map<String, Map<String, String>> mapaGeneralPickList = casoService.getStatusPicklist();
+		/*Map<String, Map<String, String>> mapaGeneralPickList = casoService.getStatusPicklist();
 		if (mapaGeneralPickList != null && mapaGeneralPickList.containsKey("Status")){
 			model.addObject("statusMap", mapaGeneralPickList.get("Status")); 
-		}
+		}*/
+		Map<String, Map<String, String>> mapaGeneralPickList = pickListService.getPickListPorObjeto("Case");
 		
 		System.out.println("Picklist recuperados");
 		return model;
