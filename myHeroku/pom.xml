@@ -17,30 +17,6 @@
 		<hibernate.version>4.3.11.Final</hibernate.version>
 	</properties>
 	
-	<!-- salesforce enterprise -->
-    <!-- <distributionManagement>
-        <repository>
-            <id>internal</id>
-            <name>internal</name>
-            <url>http://localhost:8081/artifactory/internal</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshot</id>
-            <name>snapshot</name>
-            <url>http://localhost:8081/artifactory/snapshot</url>
-        </snapshotRepository>
-    </distributionManagement>  -->
-	<repositories>
-        <repository>
-            <id>force-rest-api</id>
-            <name>force-rest-api repository on GitHub</name>
-            <url>http://jesperfj.github.com/force-rest-api/repository/</url>
-        </repository>
-        <repository>
-            <id>webjars</id>
-            <url>http://webjars.github.com/m2</url>
-        </repository>
-    </repositories>
 	<dependencies>
 		<!-- spring mvc -->
 		<dependency>
@@ -76,18 +52,6 @@
 		    <version>${spring-mvc.version}</version>
 		</dependency> 
 		
-		<!-- spring security -->
-		<!-- <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>${spring-security.version}</version>
-        </dependency> 
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>${spring-security.version}</version>
-        </dependency> -->
-        
         <!-- jstl for jsp page -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -153,29 +117,6 @@
 		    <artifactId>datatables</artifactId>
 		    <version>1.9.4-2</version>
 		</dependency>
-		
-		<dependency>
-		    <groupId>com.force.api</groupId>
-		    <artifactId>force-rest-api</artifactId>
-		    <version>0.0.23</version>
-		</dependency>
-		<dependency>
-		    <groupId>com.force.sdk</groupId>
-		    <artifactId>force-oauth</artifactId>
-		    <version>22.0.8-BETA</version>
-		</dependency>
-		<dependency>
-		    <groupId>com.force.sdk</groupId>
-		    <artifactId>force-springsecurity</artifactId>
-		    <version>22.0.8-BETA</version>
-		</dependency>
-		
-		<!--  <dependency>
-            <groupId>org.jvnet.jaxb2_commons</groupId>
-            <artifactId>jaxb2-basics</artifactId>
-            <version>0.5.1</version>
-        </dependency>-->
-
 	   </dependencies>
   
   <build>
@@ -245,163 +186,6 @@
 			  </processTypes> -->
 			</configuration>			
 	      </plugin>
-        
-        
-        
-        <!-- salesforce -->
-       <!-- <plugin>
-          <groupId>org.jvnet.jax-ws-commons</groupId>
-          <artifactId>jaxws-maven-plugin</artifactId>
-          <version>2.3</version>
-          <dependencies>
-              <dependency>
-                  <groupId>org.jvnet.jaxb2_commons</groupId>
-                  <artifactId>jaxb2-basics</artifactId>
-                  <version>0.5.1</version>
-              </dependency>
-          </dependencies>
-          <configuration>
-              <implDestDir>target/generated-sources</implDestDir>
-              <sourceDestDir>target/generated-sources</sourceDestDir>
-              <extension>true</extension>
-              <protocol>Xsoap1.1</protocol>
-              <target>2.0</target>
-              <xjcArgs>
-                  <xjcArg>-target</xjcArg>
-                  <xjcArg>2.0</xjcArg>
-                  <xjcArg>-XtoString</xjcArg>
-                  <xjcArg>-Xequals</xjcArg>
-                  <xjcArg>-XhashCode</xjcArg>
-              </xjcArgs>
-              <wsdlDirectory>src/main/resources/</wsdlDirectory>
-              <bindingDirectory>src/main/resources/bindings</bindingDirectory>
-              <bindingFiles>
-                  <bindingFile>bindings.xjb</bindingFile>
-              </bindingFiles>
-          </configuration>
-          <executions>
-              <execution>
-                  <id>compile-wsdl-sfdc</id>
-                  <phase>generate-sources</phase>
-                  <goals>
-                      <goal>wsimport</goal>
-                  </goals>
-                  <configuration>
-                      <wsdlFiles>
-                          <wsdlFile>enterprise.wsdl</wsdlFile>
-                      </wsdlFiles>
-                      <wsdlLocation>src/main/resources/</wsdlLocation>
-                  </configuration>
-              </execution>
-          </executions>
-		</plugin>
-		<plugin>
-		    <groupId>org.codehaus.mojo</groupId>
-		    <artifactId>build-helper-maven-plugin</artifactId>
-		    <version>1.8</version>
-		    <executions>
-		        <execution>
-		            <id>add-source</id>
-		            <phase>generate-sources</phase>
-		            <goals>
-		                <goal>add-source</goal>
-		            </goals>
-		            <configuration>
-		                <sources>
-		                    <source>${project.build.directory}/generated-sources/java/</source>
-		                </sources>
-		            </configuration>
-		        </execution>
-		    </executions>
-		</plugin> -->
-	
     </plugins>
-	<!-- <pluginManagement>
-         <plugins>
-             <plugin>
-                 <groupId>org.eclipse.m2e</groupId>
-                 <artifactId>lifecycle-mapping</artifactId>
-                 <version>1.0.0</version>
-                 <configuration>
-                     <lifecycleMappingMetadata>
-                         <pluginExecutions>
-                             <pluginExecution>
-                                 <pluginExecutionFilter>
-                                     <groupId>
-                                         org.jvnet.jax-ws-commons
-                                     </groupId>
-                                     <artifactId>
-                                         jaxws-maven-plugin
-                                     </artifactId>
-                                     <versionRange>
-                                         [2.3,)
-                                     </versionRange>
-                                     <goals>
-                                         <goal>wsimport</goal>
-                                     </goals>
-                                 </pluginExecutionFilter>
-                                 <action>
-                                     <ignore></ignore>
-                                 </action>
-                             </pluginExecution>
-                              <pluginExecution>
-	                          <pluginExecutionFilter>
-	                            <groupId>org.codehaus.mojo</groupId>
-	                            <artifactId>build-helper-maven-plugin</artifactId>
-	                            <versionRange>[1.0,)</versionRange>
-	                            <goals>
-	                              <goal>parse-version</goal>
-	                              <goal>add-source</goal>
-	                              <goal>maven-version</goal>
-	                              <goal>add-resource</goal>
-	                              <goal>add-test-resource</goal>
-	                              <goal>add-test-source</goal>
-	                            </goals>
-	                          </pluginExecutionFilter>
-	                          <action>
-	                            <execute>
-	                              <runOnConfiguration>true</runOnConfiguration>
-	                              <runOnIncremental>true</runOnIncremental>
-	                            </execute>
-	                          </action>
-	                        </pluginExecution>
-                         </pluginExecutions>
-                     </lifecycleMappingMetadata>
-                 </configuration>
-             </plugin> 
-            <plugin>
-            	<groupId>org.eclipse.m2e</groupId>
-            	<artifactId>lifecycle-mapping</artifactId>
-            	<version>1.0.0</version>
-            	<configuration>
-                	<lifecycleMappingMetadata>
-                      <pluginExecutions>
-                        <pluginExecution>
-	                          <pluginExecutionFilter>
-	                            <groupId>org.codehaus.mojo</groupId>
-	                            <artifactId>build-helper-maven-plugin</artifactId>
-	                            <versionRange>[1.0,)</versionRange>
-	                            <goals>
-	                              <goal>parse-version</goal>
-	                              <goal>add-source</goal>
-	                              <goal>maven-version</goal>
-	                              <goal>add-resource</goal>
-	                              <goal>add-test-resource</goal>
-	                              <goal>add-test-source</goal>
-	                            </goals>
-	                          </pluginExecutionFilter>
-	                          <action>
-	                            <execute>
-	                              <runOnConfiguration>true</runOnConfiguration>
-	                              <runOnIncremental>true</runOnIncremental>
-	                            </execute>
-	                          </action>
-	                        </pluginExecution>
-	                    </pluginExecutions>
-	                </lifecycleMappingMetadata>
-	            </configuration>
-        	</plugin>
-         </plugins>
-     </pluginManagement> -->
   </build>
 </project>
